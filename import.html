@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head><title>Daily Flow Import</title></head>
+<body>
+    <script>
+        const appScheme = "dailyflow://import" + window.location.search;
+        window.location.href = appScheme;
+        document.body.innerHTML = '<h2>Daily Flow</h2><p>Redirecting to app...</p>' + 
+            '<a href="' + appScheme + '">Click here if not redirected</a>';
+    </script>
+</body>
+</html>
