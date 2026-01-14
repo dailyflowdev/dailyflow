@@ -1,12 +1,67 @@
 <!DOCTYPE html>
-<html>
-<head><title>Daily Flow Import</title></head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Import to Daily Flow</title>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+            max-width: 400px;
+        }
+        h2 { margin-bottom: 10px; color: #199290; }
+        p { margin-bottom: 30px; color: #666; font-size: 16px; }
+        
+        .btn {
+            background-color: #199290;
+            color: white;
+            padding: 16px 32px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 18px;
+            display: inline-block;
+            box-shadow: 0 4px 12px rgba(25, 146, 144, 0.3);
+            transition: transform 0.2s;
+        }
+        .btn:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
 <body>
+
+    <div class="container">
+        <h2>Daily Flow</h2>
+        <p>You received a shared task.<br>Tap below to import it into your app.</p>
+        
+        <a id="app-link" class="btn" href="#">IMPORT TASK</a>
+    </div>
+
     <script>
-        const appScheme = "dailyflow://import" + window.location.search;
-        window.location.href = appScheme;
-        document.body.innerHTML = '<h2>Daily Flow</h2><p>Redirecting to app...</p>' + 
-            '<a href="' + appScheme + '">Click here if not redirected</a>';
+        const queryParams = window.location.search;
+        const appScheme = "dailyflow://import" + queryParams;
+        const linkBtn = document.getElementById('app-link');
+        linkBtn.href = appScheme;
+        
+        window.onload = function() {
+            setTimeout(function() {
+                window.location.href = appScheme;
+            }, 500);
+        };
     </script>
 </body>
 </html>
